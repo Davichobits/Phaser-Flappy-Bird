@@ -6,8 +6,22 @@ const config = {
   width: 800,
   height: 600,
   physics: {
+    // Arcade physics plugin, manages physics simulation
     default: "arcade",
   },
+  scene: {
+    preload,
+    create,
+  },
+}
+// Loading assets, such as images, music, animations, etc.
+function preload() {
+  this.load.image('sky', 'assets/sky.png');
+}
+
+// Display on the screen
+function create() {
+  this.add.image(config.width / 2, config.height / 2, 'sky');
 }
 
 new Phaser.Game(config);
