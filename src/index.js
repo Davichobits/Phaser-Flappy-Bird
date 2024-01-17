@@ -17,11 +17,13 @@ const config = {
 // Loading assets, such as images, music, animations, etc.
 function preload() {
   this.load.image('sky', 'assets/sky.png');
+  this.load.image('bird', 'assets/bird.png');
 }
 
 // Display on the screen
 function create() {
-  this.add.image(config.width / 2, config.height / 2, 'sky');
+  this.add.image(0, 0, 'sky').setOrigin(0, 0);
+  this.add.sprite(0,config.width / 2, 'bird').setOrigin(0,0);
 }
 
 new Phaser.Game(config);
