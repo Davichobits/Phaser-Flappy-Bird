@@ -12,6 +12,7 @@ const config = {
   scene: {
     preload,
     create,
+    update
   },
 }
 // Loading assets, such as images, music, animations, etc.
@@ -20,13 +21,23 @@ function preload() {
   this.load.image('bird', 'assets/bird.png');
 }
 
+let bird = null;
+
 // Display on the screen
 function create() {
   this.add.image(0, 0, 'sky').setOrigin(0, 0);
-  this.add.sprite(0,config.width / 2, 'bird').setOrigin(0,0);
+  bird = this.physics.add.sprite(0,config.width / 2, 'bird').setOrigin(0,0);
+  bird.body.gravity.y = 200;
+}
+
+// 60 fps
+// 60 times per second
+function update(time, delta){
+  console.log(bird.body.velocity.y);
 }
 
 new Phaser.Game(config);
+
 
 
 // Phaser.AUTO: Phaser intentará usar WebGL si está disponible en el navegador; de lo contrario, utilizará el renderizador de lienzo (Canvas). Esta opción es útil para aprovechar al máximo las capacidades de rendimiento del navegador.
