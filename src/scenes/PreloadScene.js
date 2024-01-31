@@ -12,7 +12,8 @@ class PreloadScene extends Phaser.Scene {
     this.load.spritesheet('bird', 'assets/birdSprite.png', {
       frameWidth: 16, frameHeight: 16
     });
-    // this.load.bitmapFont('Press_Start_2P', 'assets/Press_Start_2P/PressStart2P-Regular.fnt');
+
+    this.load.text('PressStartFont', 'assets/fonts/PressStart2P.ttf');
     this.load.image('pipe', 'assets/pipe.png');
     this.load.image('pause', 'assets/pause.png');
     this.load.image('back', 'assets/back.png');
