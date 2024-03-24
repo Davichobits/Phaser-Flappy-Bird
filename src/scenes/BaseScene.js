@@ -9,7 +9,8 @@ export class BaseScene extends Phaser.Scene {
     this.lineHeight = 42;
     this.fontOptions = {
       fontSize: `${this.fontSize}px`,
-      fill: '#FFF'
+      fill: '#FFF',
+      'font-weight': 'bold'
     }
   }
 
