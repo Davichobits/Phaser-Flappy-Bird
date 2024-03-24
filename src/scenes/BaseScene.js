@@ -10,7 +10,6 @@ export class BaseScene extends Phaser.Scene {
     this.fontOptions = {
       fontSize: `${this.fontSize}px`,
       fill: '#FFF',
-      'font-weight': 'bold'
     }
   }
 

@@ -8,15 +8,18 @@ export class Playscene extends BaseScene {
 
     this.bird = null;
     this.pipes = null;
+
     this.pipesDistanceRange = [150, 250];
     this.pipesHorizontalDistanceRange = [500, 600];
     this.pipeHorizontalDistance = 0;
     this.flapVelocity = 150;
+
     this.score = 0;
     this.scoreText = '';
     this.bestScoreText = '';
   }
   create() {
+    super.create();
     this.createBird();
     this.createPipes();
     this.createColliders();
