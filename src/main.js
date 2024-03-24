@@ -14,7 +14,7 @@ const BIRD_POSITION = {
 const SHARED_CONFIG = {
     width: WIDTH,
     height: HEIGHT,
-    startPosition: BIRD_POSITION
+    startPosition: BIRD_POSITION,
 }
 
 const Scenes = [PreloadScene, MenuScene, Playscene, ScoreScene];

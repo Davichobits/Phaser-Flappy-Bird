@@ -18,7 +18,8 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('bird', 'assets/bird.png');
     this.load.image('pipe', 'assets/pipe.png');
     this.load.image('pause', 'assets/pause.png');
-    this.load.image('fullscreen', 'assets/back.png');
+    this.load.image('back', 'assets/back.png')
+    this.load.image('fullscreen', 'assets/zoomout.png');
   }
   create() {
     this.scene.start('MenuScene')

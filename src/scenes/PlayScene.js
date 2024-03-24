@@ -63,7 +63,7 @@ export class Playscene extends BaseScene {
   }
 
   createFullscreenButton() {
-    const button = this.add.image(this.config.width - 16, this.config.height - 16, 'fullscreen').setScale(6).setOrigin(1).setInteractive();
+    const button = this.add.image(this.config.width - 16, this.config.height - 16, 'fullscreen').setScale(0.1).setOrigin(1).setInteractive();
     button.on('pointerup', function () {
 
       if (this.scale.isFullscreen) {
