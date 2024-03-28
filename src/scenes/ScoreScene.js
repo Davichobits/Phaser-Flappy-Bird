@@ -3,7 +3,6 @@ import { BaseScene } from "./BaseScene";
 export class ScoreScene extends BaseScene {
   constructor(config) {
     super('ScoreScene', { ...config, canGoBack: true });
-    this.config = config;
   }
   create() {
     super.create();
