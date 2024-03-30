@@ -32,12 +32,13 @@ const config = {
         height: 600
     },
     ...SHARED_CONFIG,
+    pixelArt: true,
     scene: initScenes(),
     physics: {
         default: 'arcade',
         arcade: {
             // gravity: { y: 400 },
-            debug: true
+            // debug: true
         }
     }
 };

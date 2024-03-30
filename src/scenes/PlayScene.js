@@ -44,6 +44,13 @@ export class Playscene extends BaseScene {
     this.handleInputs();
     this.listenToEvents();
     this.createFullscreenButton();
+    this.anims.create({
+      key: "fly",
+      frames: this.anims.generateFrameNumbers('bird', { start: 8, end: 15 }),
+      frameRate: 12,
+      repeat: -1
+    })
+    this.bird.play("fly")
   }
 
   update() {
@@ -86,6 +93,8 @@ export class Playscene extends BaseScene {
     .setFlip(true)
     .setScale(3)
     .setOrigin(0);
+
+    this.bird.setBodySize(this.bird.width - 1, this.bird.height - 8);
     this.bird.body.gravity.y = 600;
     this.bird.setCollideWorldBounds(true);
   }
