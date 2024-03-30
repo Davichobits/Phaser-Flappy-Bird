@@ -28,7 +28,7 @@ export class Playscene extends BaseScene {
       },
       'hard': {
         pipeHorizontalDistanceRange: [250, 310],
-        pipeVerticalDistanceRange: [50, 100]
+        pipeVerticalDistanceRange: [50, 150]
       }
     }
   }
@@ -82,7 +82,10 @@ export class Playscene extends BaseScene {
   }
 
   createBird() {
-    this.bird = this.physics.add.sprite(this.config.startPosition.x, this.config.startPosition.y, 'bird').setOrigin(0);
+    this.bird = this.physics.add.sprite(this.config.startPosition.x, this.config.startPosition.y, 'bird')
+    .setFlip(true)
+    .setScale(3)
+    .setOrigin(0);
     this.bird.body.gravity.y = 600;
     this.bird.setCollideWorldBounds(true);
   }
