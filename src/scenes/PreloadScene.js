@@ -23,6 +23,7 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('pause', 'assets/pause.png');
     this.load.image('back', 'assets/back.png')
     this.load.image('fullscreen', 'assets/zoomout.png');
+    this.load.bitmapFont('atari', 'assets/bitmap/atari-classic.png', 'assets/bitmap/atari-classic.xml');
   }
   create() {
     this.scene.start('MenuScene')

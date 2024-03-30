@@ -5,8 +5,8 @@ import { MenuScene } from './scenes/MenuScene';
 import { Playscene } from './scenes/PlayScene';
 import { PauseScene } from './scenes/PauseScene';
 
-const WIDTH = 800;
-const HEIGHT = 600;
+const WIDTH = 1080;
+const HEIGHT = 608;
 const BIRD_POSITION = {
     x: WIDTH * 0.1,
     y: HEIGHT / 2
@@ -28,8 +28,8 @@ const config = {
         mode: Phaser.Scale.FIT,
         parent: 'phaser-example',
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 800,
-        height: 600
+        width: WIDTH,
+        height: HEIGHT
     },
     ...SHARED_CONFIG,
     pixelArt: true,
