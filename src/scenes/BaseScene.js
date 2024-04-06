@@ -6,7 +6,7 @@ export class BaseScene extends Phaser.Scene {
     this.config = config;
     this.screenCenter = [config.width / 2, config.height / 2];
     this.fontSize = 56;
-    this.lineHeight = 42;
+    this.lineHeight = 56;
     this.fontOptions = {
       fontSize: `${this.fontSize}px`,
       fontFamily: 'monospace',
@@ -15,7 +15,7 @@ export class BaseScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(0, 0, 'sky').setOrigin(0, 0);
+    this.add.image(0, 0, 'sky').setOrigin(0, 0).setScale(3);
 
     if (this.config.canGoBack) {
       const backButton = this.add.image(this.config.width - 16, this.config.height - 16, 'back').
@@ -36,8 +36,6 @@ export class BaseScene extends Phaser.Scene {
 
       menuItem.textGO = this.add.bitmapText(...menuPosition, 'atari', menuItem.text, 40).setOrigin(0.5,1).setRightAlign();
 
-
-      menuItem.textGO.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000);
       lastMenuPositionY += this.lineHeight;
       setupMenuEvents(menuItem);
     })

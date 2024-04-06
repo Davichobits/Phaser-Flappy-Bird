@@ -14,16 +14,18 @@ export class PreloadScene extends Phaser.Scene {
     this.bestScoreText = '';
   }
   preload() {
-    this.load.image('sky', 'assets/sky.png');
-    this.load.spritesheet('bird', 'assets/birdSprite.png',  {
+    this.load.image('sky', 'assets/Layers/sky.png');
+    this.load.spritesheet('bird', 'assets/birdSprite.png', {
       frameWidth: 16,
       frameHeight: 16
     });
     this.load.image('pipe', 'assets/pipe.png');
+    this.load.image('cloud', 'assets/Layers/cloud_lonely.png')
     this.load.image('pause', 'assets/pause.png');
     this.load.image('back', 'assets/back.png')
     this.load.image('fullscreen', 'assets/zoomout.png');
-    this.load.bitmapFont('atari', 'assets/bitmap/atari-classic.png', 'assets/bitmap/atari-classic.xml');
+    this.load.bitmapFont('atari', 'assets/bitmap/atari-smooth.png', 'assets/bitmap/atari-smooth.xml');
+    this.load.bitmapFont('azoFire', 'assets/bitmap/azo-fire.png', 'assets/bitmap/azo-fire.xml');
   }
   create() {
     this.scene.start('MenuScene')

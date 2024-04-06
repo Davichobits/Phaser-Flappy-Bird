@@ -5,8 +5,8 @@ import { MenuScene } from './scenes/MenuScene';
 import { Playscene } from './scenes/PlayScene';
 import { PauseScene } from './scenes/PauseScene';
 
-const WIDTH = 1080;
-const HEIGHT = 608;
+const WIDTH = 1152;
+const HEIGHT = 648;
 const BIRD_POSITION = {
     x: WIDTH * 0.1,
     y: HEIGHT / 2

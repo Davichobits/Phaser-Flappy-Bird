@@ -1,20 +1,20 @@
 import { BaseScene } from "./BaseScene";
 
 export class PauseScene extends BaseScene {
-  constructor(config){
+  constructor(config) {
     super('PauseScene', config);
 
     this.menu = [
-      {scene: 'PlayScene', text: 'Continue'},
-      {scene: 'MenuScene', text: 'Exit'},
+      { scene: 'PlayScene', text: 'Continue' },
+      { scene: 'MenuScene', text: 'Main Menu' },
     ]
   }
-  create(){
+  create() {
     super.create();
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
   }
 
-  setupMenuEvents(menuItem){
+  setupMenuEvents(menuItem) {
     let textGO = menuItem.textGO;
     textGO.setInteractive();
     textGO.on('pointerover', () => {
@@ -24,13 +24,13 @@ export class PauseScene extends BaseScene {
       textGO.setStyle({ fill: '#fff' });
     });
     textGO.on('pointerup', () => {
-      if(menuItem.scene && menuItem.text === 'Continue'){
+      if (menuItem.scene && menuItem.text === 'Continue') {
         this.scene.resume(menuItem.scene);
         this.scene.stop();
       }
-      if(menuItem.scene && menuItem.text === 'Exit'){
-        this.scene.stop();
-        this.scene.start(menuItem.scene);
+      if (menuItem.scene && menuItem.text === 'Main Menu') {
+        this.scene.stop('PlayScene');
+        menuItem.scene && this.scene.start(menuItem.scene);
       }
     });
   }

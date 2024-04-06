@@ -8,6 +8,7 @@ export class Playscene extends BaseScene {
 
     this.bird = null;
     this.pipes = null;
+    this.cloud = null;
     this.isPaused = false;
 
     this.pipeHorizontalDistance = 0;
@@ -39,6 +40,7 @@ export class Playscene extends BaseScene {
     this.createBird();
     this.createPipes();
     this.createColliders();
+    this.createCloud();
     this.createScore();
     this.createPause();
     this.handleInputs();
@@ -116,6 +118,22 @@ export class Playscene extends BaseScene {
     this.pipes.setVelocityX(-200);
   }
 
+  createCloud() {
+    this.cloud = this.physics.add.group();
+
+    // for (let i = 0; i < 3; i++) {
+      const cloud = this.cloud.create(0, 0, 'cloud')
+        .setImmovable(true)
+        .setOrigin(0, 1);
+        
+        console.log(cloud.x)
+      // this.placePipe(cloud, cloud)
+    // }
+
+    this.cloud.setVelocityX(-200);
+    // console.log(this.cloud)
+  }
+
   createColliders() {
     this.physics.add.collider(this.bird, this.pipes, this.gameOver, null, this);
   }
@@ -123,7 +141,9 @@ export class Playscene extends BaseScene {
   createScore() {
     this.score = 0;
     const bestScore = localStorage.getItem('bestScore');
-    this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: '32px', fill: '#000'});
+    this.scoreText = this.add.bitmapText(16,36, 'atari', `Score: ${0}`, 80).setOrigin(0,1).setRightAlign();
+    this.scoreText.setFontSize(this.scoreText.fontSize/4)
+    // this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: '32px', fill: '#000'});
     this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: '18px', fill: '#000'});
   }
 
