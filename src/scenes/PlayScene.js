@@ -37,9 +37,9 @@ export class Playscene extends BaseScene {
   create() {
     this.currentDifficulty = 'easy';
     super.create();
+    this.createMountains();
     this.createBird();
     this.createClouds();
-    this.createMountains();
     this.createPipes();
     this.createColliders();
     this.createScore();
@@ -51,7 +51,8 @@ export class Playscene extends BaseScene {
   }
 
   createMountains() {
-    this.add.image(0, 0, 'glacial_montains').setOrigin(0).setScale(3);
+    this.add.image(0, 0, 'glacial_montains').setOrigin(0).setScale(2);
+    this.add.image(384, 0, 'glacial_montains').setOrigin(0).setScale(2);
   }
 
   animateBird() {
@@ -159,9 +160,9 @@ export class Playscene extends BaseScene {
 
   createPause() {
     this.isPaused = false;
-    const pauseButton = this.add.image(this.config.width - 10, 45, 'pause')
+    const pauseButton = this.add.image(this.config.width - 20, 75, 'pause')
       .setInteractive()
-      .setScale(3)
+      .setScale(4)
       .setOrigin(1);
 
     pauseButton.on('pointerdown', () => {
