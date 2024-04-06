@@ -20,7 +20,8 @@ export class PreloadScene extends Phaser.Scene {
       frameHeight: 16
     });
     this.load.image('pipe', 'assets/pipe.png');
-    this.load.image('cloud', 'assets/Layers/cloud_lonely.png')
+    this.load.image('clouds1', 'assets/Layers/clouds_mg_1.png')
+    this.load.image('clouds2', 'assets/Layers/clouds_mg_2.png')
     this.load.image('pause', 'assets/pause.png');
     this.load.image('back', 'assets/back.png')
     this.load.image('fullscreen', 'assets/zoomout.png');

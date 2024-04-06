@@ -39,8 +39,8 @@ export class Playscene extends BaseScene {
     super.create();
     this.createMountains();
     this.createBird();
-    this.createClouds();
     this.createPipes();
+    this.createClouds();
     this.createColliders();
     this.createScore();
     this.createPause();
@@ -51,8 +51,8 @@ export class Playscene extends BaseScene {
   }
 
   createMountains() {
-    this.add.image(0, 0, 'glacial_montains').setOrigin(0).setScale(2);
-    this.add.image(384, 0, 'glacial_montains').setOrigin(0).setScale(2);
+    this.add.image(0, 0, 'glacial_montains').setOrigin(0).setScale(3);
+    this.add.image(384, 0, 'glacial_montains').setOrigin(0).setScale(3);
   }
 
   animateBird() {
@@ -141,8 +141,8 @@ export class Playscene extends BaseScene {
   }
 
   createClouds() {
-    const cloud = this.add.sprite(0, 0, 'cloud').setOrigin(0);
-    cloud.y = this.config.height - cloud.height;
+    this.add.sprite(0, this.config.height, 'clouds1').setScale(3).setOrigin(0, 1);
+    this.add.sprite(0, this.config.height, 'clouds2').setScale(3).setOrigin(0, 1);
   }
 
   createColliders() {
