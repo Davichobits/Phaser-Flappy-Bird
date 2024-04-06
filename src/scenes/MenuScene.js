@@ -34,6 +34,7 @@ export class MenuScene extends BaseScene {
       menuItem.scene && this.scene.start(menuItem.scene);
 
       if (menuItem.text === 'Exit') {
+        document.exitFullscreen();
         this.game.destroy(true);
       }
     })

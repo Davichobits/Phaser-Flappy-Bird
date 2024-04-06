@@ -129,9 +129,11 @@ export class Playscene extends BaseScene {
     for (let i = 0; i < PIPES_TO_RENDER; i++) {
       const upperPipe = this.pipes.create(0, 0, 'pipe')
         .setImmovable(true)
+        .setScale(4)
         .setOrigin(0, 1);
       const lowerPipe = this.pipes.create(0, 0, 'pipe')
         .setImmovable(true)
+        .setScale(4)
         .setOrigin(0, 0);
 
       this.placePipe(upperPipe, lowerPipe)
@@ -141,8 +143,8 @@ export class Playscene extends BaseScene {
   }
 
   createClouds() {
-    this.add.sprite(0, this.config.height, 'clouds1').setScale(3).setOrigin(0, 1);
     this.add.sprite(0, this.config.height, 'clouds2').setScale(3).setOrigin(0, 1);
+    this.add.sprite(0, this.config.height, 'clouds1').setScale(3).setOrigin(0, 1);
   }
 
   createColliders() {
