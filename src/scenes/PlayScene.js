@@ -8,7 +8,7 @@ export class Playscene extends BaseScene {
 
     this.bird = null;
     this.pipes = null;
-    this.cloud = null;
+    this.clouds = null;
     this.isPaused = false;
 
     this.pipeHorizontalDistance = 0;
@@ -38,20 +38,41 @@ export class Playscene extends BaseScene {
     this.currentDifficulty = 'easy';
     super.create();
     this.createBird();
+    this.createClouds();
+    this.createMountains();
     this.createPipes();
     this.createColliders();
-    this.createCloud();
     this.createScore();
     this.createPause();
     this.handleInputs();
     this.listenToEvents();
     this.createFullscreenButton();
-    this.anims.create({
-      key: "fly",
-      frames: this.anims.generateFrameNumbers('bird', { start: 8, end: 15 }),
-      frameRate: 12,
-      repeat: -1
-    })
+    this.animateBird();
+  }
+
+  createMountains() {
+    this.add.image(0, 0, 'glacial_montains').setOrigin(0).setScale(3);
+  }
+
+  animateBird() {
+    // Verificar si la animación ya existe
+    if (!this.anims.exists('fly')) {
+      this.anims.create({
+        key: "fly",
+        frames: this.anims.generateFrameNumbers('bird', { start: 8, end: 15 }),
+        frameRate: 12,
+        repeat: -1
+      });
+    } else {
+      // Si existe, eliminarla y crearla nuevamente
+      this.anims.remove('fly');
+      this.anims.create({
+        key: "fly",
+        frames: this.anims.generateFrameNumbers('bird', { start: 8, end: 15 }),
+        frameRate: 12,
+        repeat: -1
+      });
+    }
     this.bird.play("fly")
   }
 
@@ -92,9 +113,9 @@ export class Playscene extends BaseScene {
 
   createBird() {
     this.bird = this.physics.add.sprite(this.config.startPosition.x, this.config.startPosition.y, 'bird')
-    .setFlip(true)
-    .setScale(3)
-    .setOrigin(0);
+      .setFlip(true)
+      .setScale(3)
+      .setOrigin(0);
 
     this.bird.setBodySize(this.bird.width - 1, this.bird.height - 8);
     this.bird.body.gravity.y = 600;
@@ -118,20 +139,9 @@ export class Playscene extends BaseScene {
     this.pipes.setVelocityX(-200);
   }
 
-  createCloud() {
-    this.cloud = this.physics.add.group();
-
-    // for (let i = 0; i < 3; i++) {
-      const cloud = this.cloud.create(0, 0, 'cloud')
-        .setImmovable(true)
-        .setOrigin(0, 1);
-        
-        console.log(cloud.x)
-      // this.placePipe(cloud, cloud)
-    // }
-
-    this.cloud.setVelocityX(-200);
-    // console.log(this.cloud)
+  createClouds() {
+    const cloud = this.add.sprite(0, 0, 'cloud').setOrigin(0);
+    cloud.y = this.config.height - cloud.height;
   }
 
   createColliders() {
@@ -141,10 +151,10 @@ export class Playscene extends BaseScene {
   createScore() {
     this.score = 0;
     const bestScore = localStorage.getItem('bestScore');
-    this.scoreText = this.add.bitmapText(16,36, 'atari', `Score: ${0}`, 80).setOrigin(0,1).setRightAlign();
-    this.scoreText.setFontSize(this.scoreText.fontSize/4)
+    this.scoreText = this.add.bitmapText(16, 36, 'atari', `Score: ${0}`, 80).setOrigin(0, 1).setRightAlign();
+    this.scoreText.setFontSize(this.scoreText.fontSize / 4)
     // this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: '32px', fill: '#000'});
-    this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: '18px', fill: '#000'});
+    this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: '18px', fill: '#000' });
   }
 
   createPause() {
@@ -215,7 +225,7 @@ export class Playscene extends BaseScene {
   getRightMostPipe() {
     let rightMostX = 0;
 
-    this.pipes.getChildren().forEach(function(pipe) {
+    this.pipes.getChildren().forEach(function (pipe) {
       rightMostX = Math.max(pipe.x, rightMostX);
     })
 
@@ -256,7 +266,7 @@ export class Playscene extends BaseScene {
     this.scoreText.setText(`Score: ${this.score}`)
   }
 
-  
+
   createFullscreenButton() {
     const button = this.add.image(this.config.width - 16, this.config.height - 16, 'fullscreen').setScale(0.1).setOrigin(1).setInteractive();
     button.on('pointerup', function () {
@@ -274,7 +284,7 @@ export class Playscene extends BaseScene {
 
     }, this);
   }
-  
+
 
 }
 

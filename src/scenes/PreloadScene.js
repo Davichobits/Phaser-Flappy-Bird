@@ -24,8 +24,11 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('pause', 'assets/pause.png');
     this.load.image('back', 'assets/back.png')
     this.load.image('fullscreen', 'assets/zoomout.png');
+    // fonts
     this.load.bitmapFont('atari', 'assets/bitmap/atari-smooth.png', 'assets/bitmap/atari-smooth.xml');
     this.load.bitmapFont('azoFire', 'assets/bitmap/azo-fire.png', 'assets/bitmap/azo-fire.xml');
+    // Parallax
+    this.load.image('glacial_montains', 'assets/Layers/glacial_mountains.png');
   }
   create() {
     this.scene.start('MenuScene')
