@@ -21,14 +21,11 @@ export class MenuScene extends BaseScene {
     let textGO = menuItem.textGO;
     textGO.setInteractive();
 
-    // Guardamos el tamaño original del texto
-    let originalFontSize = textGO.getData('fontSize');
-
     textGO.on('pointerover', () => {
-      textGO.setFontSize(textGO.fontSize * 1.2);
+      textGO.setFontSize(textGO.fontSize * 1.1);
     })
     textGO.on('pointerout', () => {
-      textGO.setFontSize(textGO.fontSize / 1.2);
+      textGO.setFontSize(textGO.fontSize / 1.1);
     })
     textGO.on('pointerup', () => {
       menuItem.scene && this.scene.start(menuItem.scene);

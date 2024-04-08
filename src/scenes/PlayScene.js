@@ -6,9 +6,19 @@ export class Playscene extends BaseScene {
   constructor(config) {
     super('PlayScene', config);
 
+    // UI
     this.bird = null;
     this.pipes = null;
     this.clouds = null;
+    this.montains1 = null;
+    this.montains2 = null;
+    this.montains3 = null;
+    this.cloudsback = null;
+    this.cloudsfront = null;
+
+    // Parallax speed
+    this.mountainsSpeed = 0.1;
+
     this.isPaused = false;
 
     this.pipeHorizontalDistance = 0;
@@ -51,8 +61,9 @@ export class Playscene extends BaseScene {
   }
 
   createMountains() {
-    this.add.image(0, 0, 'glacial_montains').setOrigin(0).setScale(3);
-    this.add.image(384, 0, 'glacial_montains').setOrigin(0).setScale(3);
+    this.montains1 = this.add.image(0, 0, 'glacial_montains').setOrigin(0).setScale(3);
+    this.montains2 = this.add.image(384, 0, 'glacial_montains').setOrigin(0).setScale(3);
+    this.montains3 = this.add.image(768, 0, 'glacial_montains').setOrigin(0).setScale(3);
   }
 
   animateBird() {
@@ -77,10 +88,6 @@ export class Playscene extends BaseScene {
     this.bird.play("fly")
   }
 
-  update() {
-    this.checkGameStatus();
-    this.recyclePipes();
-  }
 
   listenToEvents() {
     if (this.pauseEvent) { return; }
@@ -143,7 +150,7 @@ export class Playscene extends BaseScene {
   }
 
   createClouds() {
-    this.add.sprite(0, this.config.height, 'clouds2').setScale(3).setOrigin(0, 1);
+    this.clouds1 = this.add.sprite(0, this.config.height, 'clouds2').setScale(3).setOrigin(0, 1);
     this.add.sprite(0, this.config.height, 'clouds1').setScale(3).setOrigin(0, 1);
   }
 
@@ -156,7 +163,6 @@ export class Playscene extends BaseScene {
     const bestScore = localStorage.getItem('bestScore');
     this.scoreText = this.add.bitmapText(16, 36, 'atari', `Score: ${0}`, 80).setOrigin(0, 1).setRightAlign();
     this.scoreText.setFontSize(this.scoreText.fontSize / 4)
-    // this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: '32px', fill: '#000'});
     this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: '18px', fill: '#000' });
   }
 
@@ -247,12 +253,14 @@ export class Playscene extends BaseScene {
   gameOver() {
     this.physics.pause();
     this.bird.setTint(0xEE4824);
+    this.mountainsSpeed = 0;
 
     this.saveBestScore();
 
     this.time.addEvent({
       delay: 1000,
       callback: () => {
+        this.mountainsSpeed = 0.1;
         this.scene.restart();
       },
       loop: false
@@ -288,6 +296,21 @@ export class Playscene extends BaseScene {
     }, this);
   }
 
+  update() {
+    this.checkGameStatus();
+    this.recyclePipes();
+    // this.moveClouds();
+    this.moveMontains();
+  }
+  // moveClouds() {
+  //   this.clouds1.x -= 1;
+  //   this.clouds2.x -= 1;
+  // }
+  moveMontains() {
+    this.montains1.x -= this.mountainsSpeed;
+    this.montains2.x -= this.mountainsSpeed;
+    this.montains3.x -= this.mountainsSpeed;
+  }
 
 }
 
